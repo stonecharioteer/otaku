@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block slides %}
-<link rel="stylesheet" href="{{ url_for('static', filename='lib/reveal.js/plugin/fullscreen-img/fullscreen-img.css') }}" />
 <style>
 /*.scrollable-slide {
     max-height: 800px;
@@ -25,10 +24,8 @@
     top: auto !important;
 }
 </style>
-
 <div class ="reveal">
-    <div class ="slides">
-        
+    <div class ="slides">        
         <section data-markdown>
             <textarea data-template>
                 # {{ manga_name }}
@@ -38,8 +35,9 @@
         </section>
         
         {% for slide in slides_list %}
-        
-        <section fullscreen-img='{{ slide }}' fullscreen-size='contain'>
+        <section data-prevent-swipe>
+            <p style="font-size: 8"><b>{{ manga_name }}</b> | <b>{{ chapter }}</b> | <i>{{ title }}</i></p>
+            <a href='{{ slide }}'><img class='stretch' data-src='{{ slide }}' alt='image goes here.'></a>
         </section>
         
         {% else %}
@@ -57,14 +55,12 @@
 <script src="{{ url_for('static', filename='lib/reveal.js/js/reveal.js') }}"></script>
 <script src="{{ url_for('static', filename='lib/reveal.js/plugin/markdown/marked.js') }}"></script>
 <script src="{{ url_for('static', filename='lib/reveal.js/plugin/markdown/markdown.js') }}"></script>
-<script src="{{ url_for('static', filename='lib/reveal.js/plugin/fullscreen-img/fullscreen-img.js') }}"></script>
 <script>
     Reveal.initialize({
         dependencies: [
             {src: 'lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            {src: 'lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            {src: 'lib/reveal.js/plugin/fullscreen-img/fullscreen-img.js'}
-            ],
+            {src: 'lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        ],
         markdown: {
             smartypants: true
         },
@@ -74,21 +70,6 @@
         margin:0,
         width: "100%",
         height: "100%"
-    });
-    function resetSlideScrolling(slide) {
-        $(slide).removeClass("scrollable-slide");
-    }
-    function handleSlideScrolling(slide) {
-        if ($(slide).height()>= 800) {
-            $(slide).addClass('scrollable-slide');
-        }
-    }
-    Reveal.addEventListener('ready', function(event) {
-        handleSlideScrolling(event.currentSlide);
-    });
-    Reveal.addEventListener('slidechanged', function(event) {
-        resetSlideScrolling(event.previousSlide)
-        handleSlideScrolling(event.currentSlide);
     });
 </script>
 {% endblock %}
