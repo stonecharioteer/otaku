@@ -29,7 +29,6 @@ To run, make sure you create the following folders in this directory first.
     * js/
     * lib/
         - reveal.js/ (Clone the reveal.js github repository here)
-            * plugin
-                + fullscreen-img/ (Clone the [fullscreen-img](https://github.com/chrismetcalf/reveal.js-fullscreen-img) repository here and rename it.
     * tmp/ (The code will create this by default.)
+
 
