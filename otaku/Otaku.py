@@ -1,6 +1,10 @@
 #!/bin/env python
 """
 Otaku Base code.
+
+===
+
+This script provides all the routes for the base application.
 """
 import os
 import sys
