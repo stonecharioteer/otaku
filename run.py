@@ -9,9 +9,18 @@ This script provides all the routes for the base application.
 import os
 import shutil
 #import tarfile
+import re
 
 from flask import (Flask, render_template, url_for)
 
+def tryint(s):
+    try:
+        return int(s)
+    except:
+        return s
+
+def alphanum_key(s):
+    return [ tryint(c) for c in re.split("([0-9]+)",s) ]
 
 def get_manga_images_list(p=None):
     # Returns a list of images.
@@ -33,7 +42,8 @@ def get_manga_images_list(p=None):
             imgs += glob(join(p,possible_ext))
             imgs += glob(join(p, possible_ext.upper()))
         img_ps = []
-        for i in sorted(imgs):
+        imgs.sort(key=alphanum_key)
+        for i in imgs:
             base = i.split("/")[0]
             f = join(*i.split("/")[1:])
             url = url_for(base, filename=f)
@@ -46,7 +56,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def serve_index():
-    return render_template("index.html", slides_list=get_manga_images_list())
+    img_list = get_manga_images_list()
+    m_name = "Naruto"
+    c_number = "1"
+    c_name = "Uzumaki Naruto"
+    return render_template("index.html", slides_list=img_list, manga_name=m_name, chapter=c_number, title=c_name )
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080, threaded=True, host='0.0.0.0')
