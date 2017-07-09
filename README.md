@@ -19,9 +19,9 @@ Dependencies:
 
 To run, make sure you create the following folders in this directory first.
 static
-    css/
-    js/
-    lib/
-        reveal.js/ (Clone the reveal.js github repository here)
-    tmp/ (The code will create this by default.)
+    * css/
+    * js/
+    * lib/
+        - reveal.js/ (Clone the reveal.js github repository here)
+    * tmp/ (The code will create this by default.)
 
