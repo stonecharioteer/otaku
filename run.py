@@ -26,6 +26,7 @@ def get_manga_images_list(p=None):
     # Returns a list of images.
     from glob import glob
     from os.path import join, normpath, basename, dirname
+
     if p is None:
         p = normpath("/home/vinay/Manga/naruto/Naruto 1")
         #Copy the folder into the tmp folder
@@ -60,8 +61,8 @@ def serve_index():
     m_name = "Naruto"
     c_number = "1"
     c_name = "Uzumaki Naruto"
-    return render_template("index.html", slides_list=img_list, manga_name=m_name, chapter=c_number, title=c_name )
+    return render_template("index.html", slides_list=img_list,
+            manga_name=m_name, chapter=c_number, title=c_name)
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080, threaded=True, host='0.0.0.0')
-
