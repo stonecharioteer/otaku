@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block slides %}
+<div class ="reveal">
+    <div class ="slides">
+        
+        <section data-markdown>
+            <textarea data-template>
+                # Manga Name
+                ## Chapter Number
+                **Title**
+            </textarea>
+        </section>
+        
+        {% for slide in slides_list %}
+        
+        <section>
+            <img src='{{ slide }}' />
+        </section>
+        
+        {% else %}
+        
+        <section>There were no slides man!</section>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    Reveal.initialize();
+</script>
+{% endblock %}
