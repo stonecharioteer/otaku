@@ -23,7 +23,13 @@ def alphanum_key(s):
     return [ tryint(c) for c in re.split("([0-9]+)",s) ]
 
 def get_manga_images_list(p=None):
-    # Returns a list of images.
+    """
+    Returns a list of images.
+    ---
+
+    TODO: Need to resize the images so that they will fit in the client that's asking them(?)
+    OR, add width and height on resizing the window(?).
+    """
     from glob import glob
     from os.path import join, normpath, basename, dirname
 
