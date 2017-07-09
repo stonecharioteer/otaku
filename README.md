@@ -1,10 +1,10 @@
 # Otaku
-
-===
+---
 
 Manga / comic reader application.
+---
 
-Written in python. For best results, run with Anaconda3.
+Written in python+javascript. For best results, run with Anaconda3.
 
 Dependencies:
 * Python
@@ -14,4 +14,14 @@ Dependencies:
     - Reveal.js
     - JQuery
     - D3(?)
+
+---
+
+To run, make sure you create the following folders in this directory first.
+static
+    css/
+    js/
+    lib/
+        reveal.js/ (Clone the reveal.js github repository here)
+    tmp/ (The code will create this by default.)
 
