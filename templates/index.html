@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block slides %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lib/reveal.js/plugin/fullscreen-img/fullscreen-img.css') }}" />
 <style>
-.scrollable-slide {
+/*.scrollable-slide {
     max-height: 800px;
     height: auto/10;
     width: auto;
     overflow-y: auto !important;
-    }
+    }*/
 .reveal .slides {
       height: 100% !important;
-      top: 0 !important;
+      top: auto !important;
       margin-top: 0 !important;
 }
 
@@ -38,8 +39,7 @@
         
         {% for slide in slides_list %}
         
-        <section>
-            <img data-src='{{ slide }}'/>
+        <section fullscreen-img='{{ slide }}' fullscreen-size='contain'>
         </section>
         
         {% else %}
@@ -57,11 +57,13 @@
 <script src="{{ url_for('static', filename='lib/reveal.js/js/reveal.js') }}"></script>
 <script src="{{ url_for('static', filename='lib/reveal.js/plugin/markdown/marked.js') }}"></script>
 <script src="{{ url_for('static', filename='lib/reveal.js/plugin/markdown/markdown.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/reveal.js/plugin/fullscreen-img/fullscreen-img.js') }}"></script>
 <script>
     Reveal.initialize({
         dependencies: [
             {src: 'lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            {src: 'lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+            {src: 'lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            {src: 'lib/reveal.js/plugin/fullscreen-img/fullscreen-img.js'}
             ],
         markdown: {
             smartypants: true
