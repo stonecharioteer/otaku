@@ -4,9 +4,12 @@
 Manga / comic reader application.
 ---
 
+
 Written in python+javascript. For best results, run with Anaconda3.
 
 Dependencies:
+---
+
 * Python
     - Flask
     - Jinja
@@ -15,10 +18,13 @@ Dependencies:
     - JQuery
     - D3(?)
 
+Instructions:
 ---
 
 To run, make sure you create the following folders in this directory first.
-static
+
++ static
+    
     * css/
     * js/
     * lib/
